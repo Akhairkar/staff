@@ -18,34 +18,30 @@ Browser me `http://localhost:5173` khul jayega.
 
 ## GitHub par upload
 
-1. GitHub par naya repo banao, jaise `employee-master`.
-2. Is poore folder ko us repo me push karo:
-   ```
-   git init
-   git add .
-   git commit -m "Employee master phase 1"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/employee-master.git
-   git push -u origin main
-   ```
+Repo ka naam **`staff`** rakhna hai — `vite.config.js` me `base: "/staff/"`
+isi naam se match hone ke liye set hai. Agar repo ka naam badla to yahan
+bhi badalna padega.
 
-## GitHub Pages par deploy (free hosting)
+```
+git init
+git add .
+git commit -m "Employee master phase 1"
+git branch -M main
+git remote add origin https://github.com/<your-username>/staff.git
+git push -u origin main
+```
 
-1. `vite.config.js` me `base: "/employee-master/"` already set hai — agar repo
-   ka naam alag rakha hai to yahi naam wahan bhi daalo.
-2. Build karo:
-   ```
-   npm run build
-   ```
-   Isse `dist/` folder banega.
-3. `dist/` ko `gh-pages` branch par publish karo (easiest tareeka):
-   ```
-   npm install --save-dev gh-pages
-   npx gh-pages -d dist
-   ```
-4. Repo Settings → Pages me source `gh-pages` branch select karo. Kuch minute
-   me site `https://<your-username>.github.io/employee-master/` par live ho
-   jayegi.
+## GitHub Pages par deploy (automatic, GitHub Actions se)
+
+Is zip me `.github/workflows/deploy.yml` already included hai — push karte
+hi GitHub khud build karke deploy kar dega, `npm install` kahin bhi manually
+nahi chalana padega.
+
+1. Code push karne ke baad, repo → **Settings → Pages** → Source me
+   **"GitHub Actions"** select karo (branch wala option nahi).
+2. Repo → **Actions** tab me build automatically chalega — 1-2 min me green
+   tick aa jayega.
+3. Site live ho jayegi: `https://<your-username>.github.io/staff/`
 
 (Vercel ya Netlify pe deploy karna ho to bas repo import karo — dono Vite
 projects ko automatically detect kar lete hain, `base` ko `/` rakhna hoga

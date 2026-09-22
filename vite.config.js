@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// If you deploy this to GitHub Pages as a project site (username.github.io/employee-master),
-// set base to "/employee-master/". If you deploy to Vercel/Netlify or a custom domain, leave it as "/".
+// Deploying to GitHub Pages as a project site: username.github.io/staff/
+// base must match the repo name exactly. If you deploy to Vercel/Netlify
+// or a custom domain instead, change base back to "/".
 export default defineConfig({
   plugins: [react()],
-  base: "/employee-master/",
+  base: "/staff/",
 });
